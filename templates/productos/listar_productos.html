@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+{% block title %}<title>FeriaVirtual - Listar Productos</title>{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/listar.css' %}">
+
+<div class="container">
+	<h1 class="titulo">Listado de Productos</h1>
+
+	<form action="{% url 'createProducto' %}" class="btn-container">
+	    <input type="submit" value="Crear Producto" class="btn" />
+	</form>
+
+	<table class="tabla">
+	<tr>
+	  <th>Nombre</th>
+	  <th>Precio</th>
+	  <th>Descripcion</th>
+	  <th>Acciones</th>
+	</tr>
+
+	{% for producto in productos %}
+		<tr>
+			<td>{{ producto.nombre_producto }}</td>
+			<td>{{ producto.precio_producto }}</td>
+			<td>{{ producto.descripcion_producto }}</td>
+			<td class="bloque-iconos">
+				<a href="http://127.0.0.1:8000/productos/modificar/{{ producto.id_producto }}" class="icontainer" title="Modificar">
+					<i class="fa fa-pencil-square-o icon pen" aria-hidden="true"></i>
+				</a>
+				<a  class="icontainer" title="Eliminar" onclick="confirmacion()">
+					<i class="fa fa-trash icon trash" aria-hidden="true"></i>
+					<script type="text/javascript">
+						function confirmacion(){
+							var respuesta = confirm("¿Estás seguro?");
+							if (respuesta == true){
+								window.location.href = "http://127.0.0.1:8000/productos/eliminar/{{producto.id_producto}}"
+							}
+						}
+					</script>
+				</a>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+{% endblock %}

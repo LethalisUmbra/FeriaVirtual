@@ -1,0 +1,56 @@
+{% extends "template.html" %}
+{% block title %}<title>FeriaVirtual - Crear Feria</title>{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+<div class="container">
+		<div class="title">
+			<h4>Crear Feria</h4>
+		</div>
+		<hr>
+		<div class="formulario">
+			<form method="POST" id="feria_form">{% csrf_token %}
+				<p>
+					<input type="text" name="nombre_feria" autofocus maxlength="150" required id="id_nombre_feria" placeholder="Nombre de la Feria (ej. Feria N1)" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="comuna_feria" autofocus maxlength="150" required id="id_comuna_feria" placeholder="Comuna de la Feria (ej. Maipú)" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="inicio_feria" autofocus maxlength="150" required id="id_inicio_feria" placeholder="Calle Inicial de la Feria (ej. Radal)" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="fin_feria" autofocus maxlength="150" required id="id_fin_feria" placeholder="Calle Final de la Feria (ej. San Pablo)" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="horario_ini_feria" autofocus maxlength="150" required id="id_horario_ini_feria" placeholder="Horario apertura de la Feria (ej. 9:30)" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="horario_fin_feria" autofocus maxlength="150" required id="id_horario_fin_feria" placeholder="Horario cierre de la Feria (ej. 15:00)" class="textblock">
+				</p>
+				<p style="margin-bottom: 5px">
+					<input type="text" name="dias_feria" autofocus maxlength="150" required id="id_dias_feria" placeholder="Días de actividad de la Feria (ej. Martes y Sábado)" class="textblock">
+				</p>
+				{% if form.errors %}
+				    {% for field in form %}
+				        {% for error in field.errors %}
+				            <div class="alert alert-danger">
+				                <strong>{{ error|escape }}</strong>
+				            </div>
+				        {% endfor %}
+				    {% endfor %}
+				    {% for error in form.non_field_errors %}
+				        <div class="alert alert-danger">
+				            <strong>{{ error|escape }}</strong>
+				        </div>
+				    {% endfor %}
+				{% endif %}
+				<hr>
+				<div class="button-base">
+					<button type="submit" class="btn" name="create_btn">Crear Feria</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

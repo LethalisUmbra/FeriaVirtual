@@ -1,0 +1,59 @@
+{% extends "template.html" %}
+{% block title %}<title>FeriaVirtual - Modificar Feria</title>{% endblock %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+
+<div class="container">
+	<div class="title">
+		<h4>Modificar Feria</h4>
+	</div>
+	<hr>
+	<div class="formulario">
+		<form method="POST" id="update_form">{% csrf_token %}
+				<p>
+
+					<input type="text" name="nombre_feria" autofocus maxlength="150" required id="id_nombre_feria" class="textblock" value="{{ feria.nombre_feria }}">
+				</p>
+				<p>
+					<input type="text" name="comuna_feria" autofocus maxlength="150" required id="id_comuna_feria" value="{{ feria.comuna_feria }}" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="inicio_feria" autofocus maxlength="150" required id="id_inicio_feria" value="{{ feria.inicio_feria }}" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="fin_feria" autofocus maxlength="150" required id="id_fin_feria" value="{{ feria.fin_feria }}" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="horario_ini_feria" autofocus maxlength="150" required id="id_horario_ini_feria" value="{{ feria.horario_ini_feria }}" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="horario_fin_feria" autofocus maxlength="150" required id="id_horario_fin_feria" value="{{ feria.horario_fin_feria }}" class="textblock">
+				</p>
+				<p>
+					<input type="text" name="dias_feria" autofocus maxlength="150" required id="id_dias_feria" value="{{ feria.dias_feria }}" class="textblock">
+				</p>
+				{% if form.errors %}
+				    {% for field in form %}
+				        {% for error in field.errors %}
+				            <div class="alert alert-danger">
+				                <strong>{{ error|escape }}</strong>
+				            </div>
+				        {% endfor %}
+				    {% endfor %}
+				    {% for error in form.non_field_errors %}
+				        <div class="alert alert-danger">
+				            <strong>{{ error|escape }}</strong>
+				        </div>
+				    {% endfor %}
+				{% endif %}
+				<hr>
+				<div class="button-base">
+					<button type="submit" class="btn" name="update_btn">Modificar Feria</button>
+				</div>
+			</form>
+		</div>
+</div>
+
+{% endblock %}

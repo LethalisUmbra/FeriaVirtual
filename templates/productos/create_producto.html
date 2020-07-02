@@ -1,0 +1,44 @@
+{% extends "template.html" %}
+{% block title %}<title>FeriaVirtual - Crear Producto</title>{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+<div class="container">
+		<div class="title">
+			<h4>Crear Producto</h4>
+		</div>
+		<hr>
+		<div class="formulario">
+			<form method="POST" id="producto_form">{% csrf_token %}
+				<p>
+					<input type="text" name="nombre_producto" autofocus maxlength="150" required id="id_nombre_producto" placeholder="Nombre del Producto" class="textblock">
+				</p>
+				<p>
+					<input type="number" name="precio_producto" autofocus required id="id_precio_producto" placeholder="Precio del Producto" class="textblock">
+				</p>
+				<p style="margin-bottom: 5px">
+					<textarea name="descripcion_producto" cols="50" rows="2" required id="id_descripcion_producto" class="textblock" placeholder="Descripción del Producto"></textarea>
+				</p>
+				{% if form.errors %}
+				    {% for field in form %}
+				        {% for error in field.errors %}
+				            <div class="alert alert-danger">
+				                <strong>{{ error|escape }}</strong>
+				            </div>
+				        {% endfor %}
+				    {% endfor %}
+				    {% for error in form.non_field_errors %}
+				        <div class="alert alert-danger">
+				            <strong>{{ error|escape }}</strong>
+				        </div>
+				    {% endfor %}
+				{% endif %}
+				<hr>
+				<div class="button-base">
+					<button type="submit" class="btn" name="create_btn">Crear Producto</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

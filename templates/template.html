@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block title %}<title>FeriaVirtual</title>{% endblock %}
+	<link rel="icon" type="image/ico" href="{% static 'img/icon/favicon.ico' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/topnav.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+	<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+	<script src="{% static 'js/dropdown.js' %}"></script>
+</head>
+<body>
+	<div class="topnav">
+		<li class="topnav-left">
+			<a href="{% url 'home' %}" class="left-cont"><img src="{% static 'img/logo_white.png' %}"></a>
+
+		</li>
+		<li class="topnav-center">
+			<p class="center-title">FeriaVirtual</p>
+		</li>
+		<li class="topnav-ctlg">
+			<a class="ctlg-cntnt" href="{% url 'listarProductos' %}">Productos</a>
+			<a class="ctlg-cntnt" href="{% url 'listarFerias' %}">Ferias</a>
+		</li>
+		<li class="v-bar"></li>
+		<li class="topnav-user">
+			<a class="user-cont" onclick="dropProfile()" style="float: right;">
+				<i class="fa fa-user user-img" aria-hidden="true"></i>
+				<p class="user-txt">{{ user.username }}</p>
+			</a>
+		</li>
+	</div>
+
+	<div id="profileDropdown" class="dropdown profile">
+		<hr>
+      <a href="http://127.0.0.1:8000/profile/{{user.username}}" class="drop_btn">Perfil</a>
+      <a href="{% url 'logout' %}" class="drop_btn">Cerrar Sesión</a>
+    </div>
+
+	{% block content %}
+		Body content
+	{% endblock %}
+</body>
+</html>
