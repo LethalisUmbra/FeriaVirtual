@@ -4,6 +4,21 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/listar.css' %}">
 
+    {% if messages %}
+        {% for message in messages %}
+            {% ifequal message.category "error" %}
+            <div class="alert alert-danger">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <Strong>Error</strong> {{ message }}
+            </div>
+            {% else %}
+            <div class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <Strong>Éxito</strong> {{ message }}
+            </div>
+            {% endifequal %}
+       {% endfor %}
+    {% endif %}
 <div class="container">
 	<h1 class="titulo">Listado de Ferias</h1>
 
@@ -33,19 +48,11 @@
 			<td>{{ feria.horario_fin_feria }}</td>
 			<td>{{ feria.dias_feria }}</td>
 			<td class="bloque-iconos">
-				<a href="http://127.0.0.1:8000/ferias/modificar/{{ feria.id_feria }}" class="icontainer" title="Modificar">
+				<a href="http://letalisumbra.pythonanywhere.com/ferias/modificar/{{ feria.id_feria }}" class="icontainer" title="Modificar">
 					<i class="fa fa-pencil-square-o icon pen" aria-hidden="true"></i>
 				</a>
-				<a  class="icontainer" title="Eliminar" onclick="confirmacion()">
+				<a  class="icontainer" title="Eliminar" href="http://letalisumbra.pythonanywhere.com/ferias/eliminar/{{ feria.id_feria }}">
 					<i class="fa fa-trash icon trash" aria-hidden="true"></i>
-					<script type="text/javascript">
-						function confirmacion(){
-							var respuesta = confirm("¿Estás seguro?");
-							if (respuesta == true){
-								window.location.href = "http://127.0.0.1:8000/ferias/eliminar/{{ feria.id_feria }}"
-							}
-						}
-					</script>
 				</a>
 			</td>
 		</tr>

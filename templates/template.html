@@ -8,6 +8,7 @@
 	<link rel="icon" type="image/ico" href="{% static 'img/icon/favicon.ico' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/topnav.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/alert.css' %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 	<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
@@ -37,7 +38,7 @@
 
 	<div id="profileDropdown" class="dropdown profile">
 		<hr>
-      <a href="http://127.0.0.1:8000/profile/{{user.username}}" class="drop_btn">Perfil</a>
+      <!-- <a href="http://letalisumbra.pythonanywhere.com/profile/{{user.username}}" class="drop_btn">Perfil</a> -->
       <a href="{% url 'logout' %}" class="drop_btn">Cerrar Sesión</a>
     </div>
 

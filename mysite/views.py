@@ -27,6 +27,6 @@ def login(request):
 				do_login(request, user)
 				return redirect('home')
 		else:
-			messages.error(request, 'Error')
+			messages.error(request, 'No se ha podido iniciar sesión')
 
 	return render(request, 'login.html', {'form':login_form})

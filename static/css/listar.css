@@ -25,6 +25,7 @@ th{
 }
 td{
 	padding: 10px;
+	cursor: pointer;
 }
 
 .icontainer{

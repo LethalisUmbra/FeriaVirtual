@@ -9,11 +9,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/topnav.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/alert.css' %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
 	<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
 </head>
 <body>
+
 	<div class="topnav">
 		<li class="topnav-left">
 			<a href="{% url 'home' %}" class="left-cont"><img src="{% static 'img/logo_white.png' %}"></a>
@@ -23,6 +25,15 @@
 		</li>
 		</li>
 	</div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <Strong>Error</strong> {{ message }}
+        </div>
+       {% endfor %}
+    {% endif %}
 
 	<div class="container">
 		<h4>Iniciar Sesión</h4>

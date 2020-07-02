@@ -1,0 +1,9 @@
+.imagen-home{
+    display: block;
+    margin: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+.container{
+    margin: 10% 20%;
+}

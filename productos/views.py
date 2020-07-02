@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import CreateProductoForm, UpdateProductoForm
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Producto
 
 # CREATE
@@ -12,9 +13,9 @@ def CreateProducto(request):
 	if request.method == "POST" and 'create_btn':
 		producto_form = CreateProductoForm(request.POST)
 		if producto_form.is_valid():
-			producto_form.save();
-			return HttpResponseRedirect('/productos/listado')
-
+		    producto_form.save()
+		    messages.success(request, 'Tu producto ha sido creado con éxito')
+		    return HttpResponseRedirect('/productos/listado')
 	return render(request, 'productos/create_producto.html',{'form':producto_form})
 
 # READ
@@ -33,6 +34,7 @@ def ModificarProducto(request, id_producto):
 		if update_form.is_valid():
 			obj=update_form.save(commit = False)
 			obj.save()
+			messages.success(request, 'Tu producto ha sido modificado con éxito')
 			return HttpResponseRedirect('/productos/listado')
 	return render(request, 'productos/modificar_producto.html', {'form': update_form, 'producto':obj})
 
@@ -42,7 +44,8 @@ def DeleteProducto(request, id_producto):
 	try:
 		p = Producto.objects.get(id_producto= id_producto)
 		p.delete()
+		messages.success(request, 'Tu producto ha sido eliminado con éxito')
 		return HttpResponseRedirect('/productos/listado')
 	except Producto.DoesNotExist:
-		return render(request, 'home.html')
+		return HttpResponseRedirect('/productos/')
 	return render(request, 'home.html')

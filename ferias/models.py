@@ -8,8 +8,8 @@ class Feria(models.Model):
 	comuna_feria = models.CharField(max_length=150)
 	inicio_feria = models.CharField(max_length=200)
 	fin_feria = models.CharField(max_length=200)
-	horario_ini_feria = models.CharField(max_length=200)
-	horario_fin_feria = models.CharField(max_length=200)
+	horario_ini_feria = models.TimeField()
+	horario_fin_feria = models.TimeField()
 	dias_feria = models.CharField(max_length=200)
 
 	def __str__(self):

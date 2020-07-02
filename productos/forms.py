@@ -2,7 +2,7 @@ from django import forms
 from .models import Producto
 
 class CreateProductoForm(forms.ModelForm):
-	nombre_producto = forms.CharField()
+	nombre_producto = forms.CharField(min_length=1, max_length=150)
 	precio_producto = forms.IntegerField()
 	descripcion_producto = forms.CharField(widget=forms.Textarea)
 
@@ -16,7 +16,7 @@ class CreateProductoForm(forms.ModelForm):
 		]
 
 class UpdateProductoForm(forms.ModelForm):
-	nombre_producto = forms.CharField()
+	nombre_producto = forms.CharField(min_length=1, max_length=150)
 	precio_producto = forms.IntegerField()
 	descripcion_producto = forms.CharField(widget=forms.Textarea)
 
