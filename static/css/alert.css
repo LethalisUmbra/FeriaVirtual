@@ -1,12 +1,16 @@
 .alert {
   padding: 20px;
-  background-color: #10de28;
-  color: white;
+  background-color: #ffeb9c;
+  color: #9c5700;
 }
-
+.alert .closebtn{
+  color: #9c5700;
+}
+.alert-danger .closebtn{
+  color: #9c0006;
+}
 .closebtn {
   margin-left: 15px;
-  color: white;
   font-weight: bold;
   float: right;
   font-size: 22px;
@@ -14,10 +18,11 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
 .closebtn:hover {
   color: black;
+  transform: scale(1.5);
 }
 .alert-danger{
-    background-color: red;
+  background-color: #ffc7ce;
+  color: #9c0006;
 }

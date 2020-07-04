@@ -14,25 +14,30 @@
 		<form method="POST" id="update_form">{% csrf_token %}
 				<p>
 
-					<input type="text" name="nombre_feria" autofocus maxlength="150" required id="id_nombre_feria" class="textblock" value="{{ feria.nombre_feria }}">
+					<input type="text" name="nombre_feria" autofocus maxlength="150" minlength="4" required id="id_nombre_feria" class="textblock" value="{{ feria.nombre_feria }}">
+					<span class="text-helper">Debe contener entre 4 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="text" name="comuna_feria" autofocus maxlength="150" required id="id_comuna_feria" value="{{ feria.comuna_feria }}" class="textblock">
+					<input type="text" name="comuna_feria" autofocus maxlength="150" minlength="4" required id="id_comuna_feria" value="{{ feria.comuna_feria }}" class="textblock">
+					<span class="text-helper">Debe contener entre 4 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="text" name="inicio_feria" autofocus maxlength="150" required id="id_inicio_feria" value="{{ feria.inicio_feria }}" class="textblock">
+					<input type="text" name="inicio_feria" autofocus maxlength="150" minlength="3" required id="id_inicio_feria" value="{{ feria.inicio_feria }}" class="textblock">
+					<span class="text-helper">Debe contener entre 3 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="text" name="fin_feria" autofocus maxlength="150" required id="id_fin_feria" value="{{ feria.fin_feria }}" class="textblock">
+					<input type="text" name="fin_feria" autofocus maxlength="150" minlength="3" required id="id_fin_feria" value="{{ feria.fin_feria }}" class="textblock">
+					<span class="text-helper">Debe contener entre 3 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="time" name="horario_ini_feria" autofocus maxlength="150" required id="id_horario_ini_feria" value="{{ feria.horario_ini_feria }}" class="textblock">
+					<input type="time" name="horario_ini_feria" autofocus required id="id_horario_ini_feria" value="{{ feria.horario_ini_feria }}" class="textblock">
 				</p>
 				<p>
-					<input type="time" name="horario_fin_feria" autofocus maxlength="150" required id="id_horario_fin_feria" value="{{ feria.horario_fin_feria }}" class="textblock">
+					<input type="time" name="horario_fin_feria" autofocus required id="id_horario_fin_feria" value="{{ feria.horario_fin_feria }}" class="textblock">
 				</p>
 				<p>
-					<input type="text" name="dias_feria" autofocus maxlength="150" required id="id_dias_feria" value="{{ feria.dias_feria }}" class="textblock">
+					<input type="text" name="dias_feria" autofocus maxlength="50" minlength="4" required id="id_dias_feria" value="{{ feria.dias_feria }}" class="textblock">
+					<span class="text-helper">Debe contener entre 4 y 50 caracteres</span>
 				</p>
 				{% if form.errors %}
 				    {% for field in form %}

@@ -16,8 +16,6 @@ def CreateFeria(request):
 			feria_form.save()
 			messages.success(request, 'Tu feria ha sido creada con éxito')
 			return HttpResponseRedirect('/ferias/listado')
-		else:
-		    messages.error(request, 'No se ha podido crear la feria')
 	return render(request, 'ferias/create_feria.html',{'feria_form':feria_form})
 
 # READ

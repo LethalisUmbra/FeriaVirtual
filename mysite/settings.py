@@ -132,5 +132,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/LetalisUmbra/letalisumbra.pythonanywhere.com/static'
+# Usar en localhost
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/static/',
+]
+# Usar en pythonanywhere
+# STATIC_ROOT = '/home/LetalisUmbra/letalisumbra.pythonanywhere.com/static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

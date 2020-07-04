@@ -8,7 +8,7 @@ class CreateFeriaForm(forms.ModelForm):
 	fin_feria = forms.CharField(max_length=200, min_length=3)
 	horario_ini_feria = forms.TimeField()
 	horario_fin_feria = forms.TimeField()
-	dias_feria = forms.CharField(max_length=200, min_length=4)
+	dias_feria = forms.CharField(max_length=50, min_length=4)
 
 	class Meta:
 		model = Feria

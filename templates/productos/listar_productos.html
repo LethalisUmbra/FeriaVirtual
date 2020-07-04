@@ -6,12 +6,13 @@
 
     {% if messages %}
         {% for message in messages %}
-        <div class="alert">
+        <div class="alert {{category}}">
           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <Strong>Éxito</strong> {{ message }}
+          <Strong>Alerta</strong> {{ message }}
         </div>
        {% endfor %}
     {% endif %}
+
 <div class="container">
 	<h1 class="titulo">Listado de Productos</h1>
 
@@ -33,10 +34,10 @@
 			<td>{{ producto.precio_producto }}</td>
 			<td>{{ producto.descripcion_producto }}</td>
 			<td class="bloque-iconos">
-				<a href="http://letalisumbra.pythonanywhere.com/productos/modificar/{{ producto.id_producto }}" class="icontainer" title="Modificar">
+				<a href="/productos/modificar/{{ producto.id_producto }}" class="icontainer" title="Modificar">
 					<i class="fa fa-pencil-square-o icon pen" aria-hidden="true"></i>
 				</a>
-				<a  class="icontainer" title="Eliminar" href="http://letalisumbra.pythonanywhere.com/productos/eliminar/{{ producto.id_producto }}">
+				<a  class="icontainer" title="Eliminar" href="/productos/eliminar/{{ producto.id_producto }}">
 					<i class="fa fa-trash icon trash" aria-hidden="true"></i>
 				</a>
 			</td>

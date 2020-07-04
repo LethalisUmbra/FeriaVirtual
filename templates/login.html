@@ -41,10 +41,10 @@
 		<div class="formulario">
 			<form method="POST" id="login_form">{% csrf_token %}
 				<p>
-					<input type="text" name="username" autofocus maxlength="150" required id="id_username" placeholder="Nombre de usuario" class="textblock">
+					<input type="text" name="username" autofocus maxlength="150" minlength="5" required id="id_username" placeholder="Nombre de usuario" class="textblock">
 				</p>
 				<p style="margin-bottom: 5px">
-					<input type="password" name="password" autofocus maxlength="150" required id="id_password" placeholder="Contraseña" class="textblock">
+					<input type="password" name="password" autofocus maxlength="150" minlength="6" required id="id_password" placeholder="Contraseña" class="textblock">
 				</p>
 				{% if form.errors %}
 				    {% for field in form %}

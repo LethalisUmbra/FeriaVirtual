@@ -47,5 +47,6 @@ def DeleteProducto(request, id_producto):
 		messages.success(request, 'Tu producto ha sido eliminado con éxito')
 		return HttpResponseRedirect('/productos/listado')
 	except Producto.DoesNotExist:
-		return HttpResponseRedirect('/productos/')
+		messages.error(request, 'No se ha encontrado el producto')
+		return HttpResponseRedirect('/productos/listado')
 	return render(request, 'home.html')
