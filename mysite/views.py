@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models.functions import Concat
 from django.contrib import messages
 from django.views import generic
+from django.http import Http404
 
 # Formulario y Autenticación del Usuario
 from django.contrib.auth.forms import AuthenticationForm
@@ -36,6 +38,10 @@ def login(request):
 def profile(request, username):
 	login(request)
 	obj= get_object_or_404(User, username=username)
+
+	if request.user.id != obj.id:
+		raise Http404()
+
 	update_form = UpdateUser(request.POST or None, instance=obj)
 	if request.method == "POST" and 'update_btn':
 		if update_form.is_valid():
@@ -49,7 +55,10 @@ def profile(request, username):
 def deleteUser(request, username):
 	try:
 		u = User.objects.get(username= username)
-		u.delete()
+		if request.user.id != u.id:
+			raise Http404()
+		u.is_active = False
+		u.save()
 		return redirect('login')
 	except User.DoesNotExist:
 		return redirect('login')

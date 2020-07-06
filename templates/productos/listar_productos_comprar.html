@@ -1,0 +1,43 @@
+{% extends "template.html" %}
+{% block title %}<title>FeriaVirtual - Listar Productos</title>{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/listar.css' %}">
+
+<div class="container">
+	<h1 class="titulo">Listado de Productos</h1>
+
+	<form action="{% url 'listarProductosPropios' %}" class="btn-container">
+	    <input type="submit" value="Mis Productos" class="btn" />
+	</form>
+
+	<table class="tabla">
+	<tr>
+	  <th>Nombre</th>
+	  <th>Precio</th>
+	  <th>Descripcion</th>
+	  <th>Feriante</th>
+	  <th>Feria</th>
+	  <th>Acciones</th>
+	</tr>
+
+	{% for producto in productos %}
+		<tr>
+			<td>{{ producto.nombre_producto }}</td>
+			<td>${{ producto.precio_producto }}</td>
+			<td>{{ producto.descripcion_producto }}</td>
+			<td>{{ producto.feriante }}</td>
+			<td>{{ producto.feria }}</td>
+			<td class="bloque-iconos">
+				<form method="POST" id="carrito_form">
+					<a  class="icontainer" title="Comprar" href="/productos/comprar/{{ producto.id_producto }}" name="comprar_btn">
+						<i class="fa fa-cart-plus" aria-hidden="true"></i>
+					</a>
+				</form>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+{% endblock %}

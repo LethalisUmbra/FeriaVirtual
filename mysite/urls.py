@@ -14,6 +14,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ferias/',include('ferias.urls')),
     path('productos/',include('productos.urls')),
+    path('carrito/', include('carrito.urls')),
     path('profile/<str:username>', views.profile, name='profile'),
     path('delete/<str:username>', views.deleteUser, name='deleteUser'),
     path('login', views.login, name='login'),

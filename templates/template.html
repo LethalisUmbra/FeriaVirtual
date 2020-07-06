@@ -15,17 +15,18 @@
 	<script src="{% static 'js/dropdown.js' %}"></script>
 </head>
 <body>
-	<div class="topnav">
+	<div class="topnav azul">
 		<li class="topnav-left">
 			<a href="{% url 'home' %}" class="left-cont"><img src="{% static 'img/logo_white.png' %}"></a>
-
 		</li>
 		<li class="topnav-center">
-			<p class="center-title">FeriaVirtual</p>
+			<a href="{% url 'home' %}">
+				<p class="center-title">FeriaVirtual</p>
+			</a>
 		</li>
 		<li class="topnav-ctlg">
-			<a class="ctlg-cntnt" href="{% url 'listarProductos' %}">Productos</a>
-			<a class="ctlg-cntnt" href="{% url 'listarFerias' %}">Ferias</a>
+		    <a class="ctlg-cntnt" href="{% url 'listarProductosComprar' %}">Productos</a>
+		    <a class="ctlg-cntnt" href="{% url 'listarFerias' %}">Ferias</a>
 		</li>
 		<li class="v-bar"></li>
 		<li class="topnav-user">
@@ -39,8 +40,19 @@
 	<div id="profileDropdown" class="dropdown profile">
 		<hr>
       <a href="/profile/{{user.username}}" class="drop_btn">Perfil</a>
+      <a href="{% url 'homeCarrito' %}" class="drop_btn">Carrito</a>
+      <a href="{% url 'listarProductosPropios' %}" class="drop_btn">Mis Productos</a>
       <a href="{% url 'logout' %}" class="drop_btn">Cerrar Sesión</a>
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{category}}">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <Strong>Alerta</strong> {{ message }}
+        </div>
+       {% endfor %}
+    {% endif %}
 
 	{% block content %}
 		Body content

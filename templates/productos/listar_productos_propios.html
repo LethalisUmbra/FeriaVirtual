@@ -4,15 +4,6 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/listar.css' %}">
 
-    {% if messages %}
-        {% for message in messages %}
-        <div class="alert {{category}}">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <Strong>Alerta</strong> {{ message }}
-        </div>
-       {% endfor %}
-    {% endif %}
-
 <div class="container">
 	<h1 class="titulo">Listado de Productos</h1>
 
@@ -22,6 +13,8 @@
 
 	<table class="tabla">
 	<tr>
+	  <th>Feria</th>
+	  <th>Feriante</th>
 	  <th>Nombre</th>
 	  <th>Precio</th>
 	  <th>Descripcion</th>
@@ -30,6 +23,8 @@
 
 	{% for producto in productos %}
 		<tr>
+			<td>{{ producto.feria }}</td>
+			<td>{{ producto.feriante }}</td>
 			<td>{{ producto.nombre_producto }}</td>
 			<td>{{ producto.precio_producto }}</td>
 			<td>{{ producto.descripcion_producto }}</td>

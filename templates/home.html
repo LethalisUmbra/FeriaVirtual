@@ -6,7 +6,22 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 
 <div class="container">
-	<img src="{% static 'img/feria.png' %}" class="imagen-home">
+	<div class="title semi-azul">
+		<h1>BIENVENIDO {{ user.first_name|upper }}</h1>
+	</div>
+	<div class="content semi-negro">
+		<p>Bienvenido {{ user.username }} a FeriaVirtual.<br><br>Aquí podrás encontrar una página para que puedas tanto vender como comprar tus productos como lo solías hacer en la feria.
+			<br>Lamentablemente por la situación sanitaria por la que está pasando nuestro país, las ferias han sufrido bastante y nosotros no podíamos hacer la vista gorda,
+			es por esto que como AbModel hemos decidido otorgarles esta página minimalista con las condiciones adecuadas para que consigan comerciar sin ningún problema, con
+			una interfaz agradable y sin rodeos ni publicidad.<br><br>
+			Para comprar productos puedes pulsar arriba a la derecha, o <a href="{% url 'listarProductosComprar' %}">aquí</a>.<br><br>
+			Si acaso quieres vender productos, puedes acceder pulsando en tu perfil, o <a href="{% url 'listarProductosPropios' %}">aquí</a>.<br><br>
+			También puedes revisar las ferias registradas <a href="{% url 'listarFerias' %}">aquí</a>.<br><br>
+			Esperamos que te guste la página.</p>
+	</div>
+	<footer class="footer semi-negro">
+		® Todos los derechos reservados.
+	</footer>
 </div>
 
 {% endblock %}

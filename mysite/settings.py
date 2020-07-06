@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'productos.apps.ProductosConfig',
     'ferias.apps.FeriasConfig',
+    'carrito.apps.CarritoConfig',
     'api.apps.ApiConfig',
     'rest_framework',
 ]
@@ -139,4 +140,3 @@ STATICFILES_DIRS = [
 ]
 # Usar en pythonanywhere
 # STATIC_ROOT = '/home/LetalisUmbra/letalisumbra.pythonanywhere.com/static'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

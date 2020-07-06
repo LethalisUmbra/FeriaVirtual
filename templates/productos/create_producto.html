@@ -12,15 +12,32 @@
 		<div class="formulario">
 			<form method="POST" id="producto_form">{% csrf_token %}
 				<p>
-					<input type="text" maxlength="150" minlength="4" name="nombre_producto" autofocus required id="id_nombre_producto" placeholder="Nombre del Producto" class="textblock">
+					<select name="feria" required id="id_feria" style="margin-right: 0">
+						{% for feria in ferias %}
+							<option value="{{ feria.id_feria }}">{{ feria.nombre_feria }} {{ feria.comuna_feria }}</option>
+						{% endfor %}
+					</select>
+					<a href="{% url 'createFeria' %}" style="font-size: 1.3em;"><i class="fa fa-plus" aria-hidden="true" style="color: green;  padding: 3px 5px" title="Crear Feria"></i></a>
+					<span class="text-helper">Seleccione la feria a la que pertenece</span>
+				</p>
+				<p>
+					<select name="feriante" required id="id_feriante">
+						{% for feriante in feriantes %}
+							<option value="{{ feriante.id }}">{{ feriante.username }}</option>
+						{% endfor %}
+					</select><br>
+					<span class="text-helper">Este es su nombre de usuario</span>
+				</p>
+				<p>
+					<input type="text" name="nombre_producto" autofocus maxlength="150" minlength="4" required id="id_nombre_producto" value="{{ producto.nombre_producto }}" class="textblock"><br>
 					<span class="text-helper">Debe contener entre 4 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="number" name="precio_producto" autofocus required id="id_precio_producto" placeholder="Precio del Producto" class="textblock" min="1" max="99999">
-					<span class="text-helper">Debe variar entre $1 y $9999 pesos</span>
+					<input type="number" name="precio_producto" autofocus required id="id_precio_producto" minvalue="1" maxvalue="99999" value="{{ producto.precio_producto }}" class="textblock"><br>
+					<span class="text-helper">Debe variar entre $1 y $99.999 pesos</span>
 				</p>
 				<p style="margin-bottom: 5px">
-					<textarea name="descripcion_producto" cols="50" rows="2" required id="id_descripcion_producto" class="textblock" placeholder="Descripción del Producto (ej. Proveedor, feriante, características destacadas, etc.)"></textarea>
+					<textarea name="descripcion_producto" minlength="4" maxlength="500" cols="50" rows="2" required id="id_descripcion_producto" class="textblock">{{producto.descripcion_producto}}</textarea><br>
 					<span class="text-helper">Debe contener entre 5 y 500 caracteres</span>
 				</p>
 				{% if form.errors %}

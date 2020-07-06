@@ -12,15 +12,15 @@
 	<div class="formulario">
 		<form method="POST" id="update_form">{% csrf_token %}
 				<p>
-					<input type="text" name="nombre_producto" autofocus maxlength="150" minlength="4" required id="id_nombre_producto" value="{{ producto.nombre_producto }}" class="textblock">
+					<input type="text" name="nombre_producto" autofocus maxlength="150" minlength="4" required id="id_nombre_producto" value="{{ producto.nombre_producto }}" class="textblock"><br>
 					<span class="text-helper">Debe contener entre 4 y 150 caracteres</span>
 				</p>
 				<p>
-					<input type="number" name="precio_producto" autofocus required id="id_precio_producto" minvalue="1" maxvalue="99999" value="{{ producto.precio_producto }}" class="textblock">
+					<input type="number" name="precio_producto" autofocus required id="id_precio_producto" minvalue="1" maxvalue="99999" value="{{ producto.precio_producto }}" class="textblock"><br>
 					<span class="text-helper">Debe variar entre $1 y $9999 pesos</span>
 				</p>
 				<p style="margin-bottom: 5px">
-					<textarea name="descripcion_producto" minlength="4" maxlength="500" cols="50" rows="2" required id="id_descripcion_producto" class="textblock">{{producto.descripcion_producto}}</textarea>
+					<textarea name="descripcion_producto" minlength="4" maxlength="500" cols="50" rows="2" required id="id_descripcion_producto" class="textblock">{{producto.descripcion_producto}}</textarea><br>
 					<span class="text-helper">Debe contener entre 5 y 500 caracteres</span>
 				</p>
 				{% if form.errors %}

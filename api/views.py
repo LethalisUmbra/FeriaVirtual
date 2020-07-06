@@ -1,21 +1,9 @@
-from django.shortcuts import render
-from django.http import Http404
-from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.core import serializers
-from django.conf import settings
-import json
 
-@api_view(["POST"])
-def IdealWeight(heightdata):
-    try:
-        height=json.loads(heightdata.body)
-        weight=str(height*10)
-        return JsonResponse("Ideal weight should be:"+weight+" kg",safe=False)
-    except ValueError as e:
-        return Response(e.args[0],status.HTTP_400_BAD_REQUEST)
-
+def post(self, request):
+    user = request.data
+    serializer = UserSerializer(data=user)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response({"user": serializer.data, "status": status.HTTP_200_OK})

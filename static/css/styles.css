@@ -1,5 +1,21 @@
 body{
-	margin: 0;
-	background-color: #fff;
-	font-family: Helvetica;
+	margin 				: 0;
+	background-color 	: #fff;
+	font-family 		: Helvetica;
+}
+.azul{
+	background-color 	: rgba(0, 48, 255, 1);
+	color 				: #fff;
+}
+.semi-azul{
+	background-color 	: rgba(0, 48, 255, 0.7);
+	color 				: #fff;
+}
+.negro{
+	background-color 	: rgba(0, 0, 0, 1);
+	color 				: #fff;
+}
+.semi-negro{
+	background-color 	: rgba(0, 0, 0, 0.95);
+	color 				: #fff;
 }
